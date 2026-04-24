@@ -267,7 +267,6 @@ footer {
 
 .footer-content {
   padding: 3rem 0;
-  width: 90%;
 }
 
 /* フッターナビタイトル */
@@ -285,7 +284,6 @@ footer {
   font-size: 0.9rem;
   justify-content: space-between;
   line-height: 1.7;
-  width: 90%;
 }
 
 .footer-links ul {
