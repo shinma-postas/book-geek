@@ -1,4 +1,3 @@
-/* リセットCSS */
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +29,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
-  /* gap: 20px; */
   gap: 1rem;
 }
 
@@ -78,8 +76,8 @@ header {
 .signup-button {
   padding: 0.25rem 0.8rem;
   margin: 0.125rem 0;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
   font-size: 0.8rem;
   border-radius: 0.2rem;
@@ -90,9 +88,9 @@ header {
 
 /* サインアップボタン(ホバー) */
 .signup-button:hover {
-  color: black;
-  background-color: white;
-  box-shadow: 0 0 0 1px black;
+  color: #000;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #000;
 }
 
 /* ヒーロー */
@@ -118,7 +116,7 @@ header {
 }
 
 /* サブスク期間 */
-.billing-options {
+#billing-options {
   border-radius: 0.5rem;
   font-size: 0.95rem;
   margin: 5rem auto 3.5rem auto;
@@ -128,19 +126,27 @@ header {
   border: #f9f9f9 2px solid;
 }
 
+#billing-options {
+  cursor: pointer;
+}
+
 /* サブスク期間選択 */
 .billing-option {
-  color: black;
-  background-color: white;
+  color: #000;
+  background-color: #fff;
   border-radius: 0.4rem;
   padding: 0.4rem 0.9rem;
-  cursor: pointer;
 }
 
 /* サブスク期間選択2 */
 .selected {
-  color: white;
-  background-color: black;
+  color: #fff;
+  background-color: #000;
+}
+
+#annually span {
+  font-size: 0.8rem;
+  color: gray;
 }
 
 /* サブスクプラン */
@@ -163,8 +169,8 @@ header {
 }
 
 .plan:hover {
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
 }
 
 /* プラン名 */
@@ -190,10 +196,10 @@ header {
 .plan button {
   font-size: 1rem;
   padding: 0.6rem 1rem;
-  color: black;
-  background-color: white;
+  color: #000;
+  background-color: #fff;
   border: none;
-  box-shadow: 0 0 0 1px black;
+  box-shadow: 0 0 0 1px #000;
   cursor: pointer;
   border-radius: 0.2rem;
   display: inline-flex;
@@ -202,9 +208,9 @@ header {
 }
 
 .plan button:hover {
-  background-color: black;
-  color: white;
-  box-shadow: 0 0 0 1px white;
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 0 0 1px #fff;
 }
 
 /* プラン料金 */
@@ -221,8 +227,8 @@ header {
 
 /* cta */
 .cta {
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   padding: 7.5rem 0 6.5rem 0;
   text-align: center;
 }
@@ -246,16 +252,16 @@ header {
   border-radius: 0.1rem;
   font-size: 1.2rem;
   padding: 0.7rem 1rem;
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #000;
   border: none;
   cursor: pointer;
 }
 /* ctaサインアップボタン(ホバー) */
 .cta-signup-button:hover {
-  box-shadow: 0 0 0 1px white;
-  background-color: black;
-  color: white;
+  box-shadow: 0 0 0 1px #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 footer {
@@ -307,7 +313,7 @@ footer {
 .newsletter {
   border: gray 1.5px solid;
   border-radius: 0.3rem;
-  background-color: white;
+  background-color: #fff;
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   width: 20%;
   margin-left: 5%;
@@ -340,13 +346,13 @@ footer {
   border: #ccc 1px solid;
   border-radius: 0.3rem;
   font-size: 0.85rem;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
 }
 
 .newsletter-form button:hover {
-  background-color: white;
-  color: black;
-  box-shadow: 0 0 0 1px black;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 0 1px #000;
 }
