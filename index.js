@@ -10,20 +10,20 @@ let isAnnual = true;
 
 // 初回読み込み時
 window.onload = () => {
-  // トランジションオフ
+  // トグルアニメーションオフ
   billedSlider.style.transition = 'none';
 
   // 初期値をAnnual(true)に設定
-  toggleOptions(isAnnual);
+  toggleOptions(isAnnual, false);
 
-  // トランジションオン
+  // トグルアニメーションオン
   requestAnimationFrame(() => (billedSlider.style.transition = ''));
 };
 
 // トグル実行
-const toggleOptions = (isAnnual) => {
+const toggleOptions = (isAnnual, animate = true) => {
   setSelected(isAnnual);
-  updatePlans(isAnnual);
+  updatePlans(isAnnual, animate);
   moveSlider(isAnnual ? billedAnnually : billedMonthly);
 };
 
@@ -37,21 +37,20 @@ const setSelected = (isAnnual) => {
 const formatUSD = (value) => (value === 0 ? '$0' : `$${value.toFixed(2)}`);
 
 // プランの金額とテキストを切替
-const updatePlans = (isAnnual) => {
+const updatePlans = (isAnnual, animate = true) => {
   plans.forEach((plan) => {
     const monthlyPrice = Number(plan.dataset.monthly || 0);
     const priceEl = plan.querySelector('.price');
-    const infoEl = plan.querySelector('.price-info');
+    const infoEl = plan.querySelector('.info-span');
 
     // 金額：Annualなら20%OFFの実質月額、Monthlyなら基準月額
     const display = isAnnual ? monthlyPrice * (1 - DISCOUNT) : monthlyPrice;
 
-    priceEl.textContent = formatUSD(display);
+    const priceInfo = isAnnual ? 'annually' : 'monthly';
 
-    // テキスト
-    infoEl.textContent = isAnnual
-      ? 'per user/month, billed annually'
-      : 'per user/month, billed monthly';
+    // テキスト更新
+    changeTextWithFade(priceEl, formatUSD(display), animate);
+    changeTextWithFade(infoEl, priceInfo, animate);
   });
 };
 
@@ -68,6 +67,23 @@ const moveSlider = (targetOption) => {
   // スライダーに計算後のスタイルをセット
   billedSlider.style.width = `${targetOptionRect.width}px`;
   billedSlider.style.transform = `translateX(${offsetX}px)`;
+};
+
+// テキストの変更時にトランジション
+const changeTextWithFade = (el, newText, animate = true) => {
+  // 初回ならアニメーション無し
+  if (!animate) {
+    el.textContent = newText;
+    return;
+  }
+
+  el.style.transition = 'opacity 0.3s ease';
+  el.style.opacity = '0';
+
+  setTimeout(() => {
+    el.textContent = newText;
+    el.style.opacity = '1';
+  }, 300);
 };
 
 // トグルクリックイベント
