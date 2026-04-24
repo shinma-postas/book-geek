@@ -5,6 +5,17 @@ const billedAnnually = document.getElementById('annually');
 const billedMonthly = document.getElementById('monthly');
 const plans = document.querySelectorAll('.plan');
 
+let isAnnual = true;
+
+// 読み込み時Annualに設定
+window.onload = () => toggleOptions(isAnnual);
+
+// トグル実行
+const toggleOptions = (isAnnual) => {
+  setSelected(isAnnual);
+  updatePlans(isAnnual);
+};
+
 // 金額をUSD表記に整形
 const formatUSD = (value) => (value === 0 ? '$0' : `$${value.toFixed(2)}`);
 
@@ -35,17 +46,6 @@ const updatePlans = (isAnnual) => {
 
 // クリックされた要素から、どちらを選んだか判定して切替
 billedOptions.addEventListener('click', (e) => {
-  const annualClicked = e.target.closest('#annually');
-  const monthlyClicked = e.target.closest('#monthly');
-  if (!annualClicked && !monthlyClicked) return;
-
-  // Annualフラグ
-  const isAnnual = Boolean(annualClicked);
-
-  // cssクラスの切替と、プランの金額・テキストの切替
-  setSelected(isAnnual);
-  updatePlans(isAnnual);
+  isAnnual = !isAnnual;
+  toggleOptions(isAnnual);
 });
-
-// 初期状態に合わせて同期
-updatePlans(billedAnnually.classList.contains('selected'));

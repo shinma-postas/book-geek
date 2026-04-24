@@ -126,13 +126,16 @@ header {
   border: #f9f9f9 2px solid;
 }
 
+#billing-options {
+  cursor: pointer;
+}
+
 /* サブスク期間選択 */
 .billing-option {
   color: #000;
   background-color: #fff;
   border-radius: 0.4rem;
   padding: 0.4rem 0.9rem;
-  cursor: pointer;
 }
 
 /* サブスク期間選択2 */
