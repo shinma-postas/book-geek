@@ -13,7 +13,7 @@ window.onload = () => {
   // トランジションオフ
   billedSlider.style.transition = 'none';
 
-  // 初期値をAnnualに設定
+  // 初期値をAnnual(true)に設定
   toggleOptions(isAnnual);
 
   // トランジションオン
@@ -56,15 +56,18 @@ const updatePlans = (isAnnual) => {
 };
 
 // スライダーの位置・幅を対象要素に合わせてセット
-const moveSlider = (target) => {
-  // billing-options の左端を基準にした相対位置を計算
+const moveSlider = (targetOption) => {
+  // 移動量計算用の数値を取得
   const parentRect = billedOptions.getBoundingClientRect();
-  const targetRect = target.getBoundingClientRect();
+  const targetOptionRect = targetOption.getBoundingClientRect();
+  const parentPaddingLeft = parseFloat(getComputedStyle(billedOptions).paddingLeft);
 
-  billedSlider.style.width = `${targetRect.width}px`;
-  billedSlider.style.transform = `translateX(${
-    targetRect.left - parentRect.left - parseFloat(getComputedStyle(billedOptions).paddingLeft)
-  }px)`;
+  // 移動量を算出
+  const offsetX = targetOptionRect.left - parentRect.left - parentPaddingLeft;
+
+  // スライダーに計算後のスタイルをセット
+  billedSlider.style.width = `${targetOptionRect.width}px`;
+  billedSlider.style.transform = `translateX(${offsetX}px)`;
 };
 
 // トグルクリックイベント
