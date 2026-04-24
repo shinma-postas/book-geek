@@ -1,146 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>BookGeek</title>
-    <link rel="stylesheet" href="price-list.css">
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="logo-text">BookGeek</div>
-            <nav class="nav">
-                <div class="nav-item">About</div>
-                <div class="nav-item">Features</div>
-                <div class="nav-item">Pricing</div>
-                <div class="nav-item">Blog</div>
-            </nav>
-            <div class="auth-buttons">
-                <div class="login-button">Log in</div>
-                <div class="signup-button">Get Started</div>
-            </div>
-        </header>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="logo-text">BookGeek</div>
+      <nav class="nav">
+        <div class="nav-item"><a href="#">About</a></div>
+        <div class="nav-item"><a href="#">Features</a></div>
+        <div class="nav-item"><a href="#">Pricing</a></div>
+        <div class="nav-item"><a href="#">Blog</a></div>
+      </nav>
+      <div class="auth-buttons">
+        <a class="login-button" href="#">Log in</a>
+        <a class="signup-button" href="#">Get Started</a>
+      </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Unlimited Books, Anytime, Anywhere.</h1>
-                    <p>Discover your next favorite book with our extensive collection. Get started today, no credit card needed.</p>
-                </div>
-            </div>
-        </section>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <h1>Unlimited Books, Anytime, Anywhere.</h1>
+          <p>
+            Discover your next favorite book with our extensive collection. Get started today, no
+            credit card needed.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <section class="pricing">
-            <div class="billing-options">
-                <div class="billing-option">Billed Monthly</div>
-                <div class="billing-option selected">Billed Annually</div>
-            </div>
-            <div class="plans">
-                <div class="plan">
-                    <h2>Free</h2>
-                    <p class="price">$0</p>
-                    <p>per user/month, billed annually</p>
-                    <ul>
-                        <li>Access to free books</li>
-                        <li>Basic recommendations</li>
-                        <li>Up to 5 books per month</li>
-                    </ul>
-                    <button>Get Started</button>
-                </div>
-                <div class="plan">
-                    <h2>Basic</h2>
-                    <p class="price">$9.99</p>
-                    <p>per user/month, billed annually</p>
-                    <ul>
-                        <li>Access to premium books</li>
-                        <li>Enhanced recommendations</li>
-                        <li>Unlimited books</li>
-                    </ul>
-                    <button>Get Started</button>
-                </div>
-                <div class="plan premium">
-                    <h2>Pro</h2>
-                    <p class="price">$19.99</p>
-                    <p>per user/month, billed annually</p>
-                    <ul>
-                        <li>Access to exclusive books</li>
-                        <li>Personalized recommendations</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <button>Get Started</button>
-                </div>
-                <div class="plan">
-                    <h2>Enterprise</h2>
-                    <p class="price">$49.99</p>
-                    <p>per user/month, billed annually</p>
-                    <ul>
-                        <li>Unlimited corporate access</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom billing</li>
-                    </ul>
-                    <button>Contact Our Sales</button>
-                </div>
-            </div>
-        </section>
+    <section class="pricing container">
+      <div class="billing-options">
+        <div class="billing-option">Billed Monthly</div>
+        <div class="billing-option selected">Billed Annually</div>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h2>Free</h2>
+          <p class="price">$0</p>
+          <p class="price-info">per user/month, billed annually</p>
+          <div class="plan-text">
+            <ul>
+              <li>Access to free books</li>
+              <li>Basic recommendations</li>
+              <li>Up to 5 books per month</li>
+            </ul>
+          </div>
+          <button>Get Started</button>
+        </div>
+        <div class="plan">
+          <h2>Basic</h2>
+          <p class="price">$9.99</p>
+          <p class="price-info">per user/month, billed annually</p>
+          <div class="plan-text">
+            <ul>
+              <li>Access to premium books</li>
+              <li>Enhanced recommendations</li>
+              <li>Unlimited books</li>
+            </ul>
+          </div>
+          <button>Get Started</button>
+        </div>
+        <div class="plan">
+          <h2>Pro</h2>
+          <p class="price">$19.99</p>
+          <p class="price-info">per user/month, billed annually</p>
+          <div class="plan-text">
+            <ul>
+              <li>Access to exclusive books</li>
+              <li>Personalized recommendations</li>
+              <li>Priority support</li>
+            </ul>
+          </div>
+          <button>Get Started</button>
+        </div>
+        <div class="plan">
+          <h2>Enterprise</h2>
+          <p class="price">$49.99</p>
+          <p class="price-info">per user/month, billed annually</p>
+          <div class="plan-text">
+            <ul>
+              <li>Unlimited corporate access</li>
+              <li>Dedicated account manager</li>
+              <li>Custom billing</li>
+            </ul>
+          </div>
+          <button>Contact Our Sales</button>
+        </div>
+      </div>
+    </section>
 
-        <section class="cta">
-            <h2>Enhance Your Reading Experience</h2>
-            <p>Explore our platform and discover how it can transform your reading habits.</p>
-            <div class="cta-buttons">
-                <button class="cta-get-started">Get Started</button>
-            </div>
-        </section>
+    <section class="cta">
+      <div class="container">
+        <h2>Enhance Your Reading Experience</h2>
+        <p>Explore our platform and discover how it can transform your reading habits.</p>
+        <a class="cta-signup-button" href="#">Get Started</a>
+      </div>
+    </section>
 
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="logo-text">BookGeek</div>
-            </div>
-            <div class="footer-links">
-                <div class="footer-link-section">
-                    <h3>Pages</h3>
-                    <ul>
-                        <li>About Us</li>
-                        <li>Features</li>
-                        <li>Product</li>
-                        <li>Pricing</li>
-                    </ul>
-                </div>
-                <div class="footer-link-section">
-                    <h3>Company</h3>
-                    <ul>
-                        <li>Careers</li>
-                        <li>Guide</li>
-                        <li>Partnerships</li>
-                    </ul>
-                </div>
-                <div class="footer-link-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li>Help Center</li>
-                        <li>Customer Support</li>
-                        <li>API Docs</li>
-                        <li>System Status</li>
-                    </ul>
-                </div>
-                <div class="footer-link-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li>FAQ</li>
-                        <li>Blog</li>
-                        <li>Privacy Policy</li>
-                        <li>Terms of Service</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="newsletter">
-                <h3>Subscribe to Our Newsletter</h3>
-                <p>Stay updated with the latest book releases and exclusive offers</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Enter your email">
-                    <button>Subscribe</button>
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="logo-text">BookGeek</div>
+      </div>
+      <div class="footer-links container">
+        <div>
+          <h3 class="footer-nav-title">Pages</h3>
+          <ul>
+            <li class="footer-nav-item">About Us</li>
+            <li class="footer-nav-item">Features</li>
+            <li class="footer-nav-item">Product</li>
+            <li class="footer-nav-item">Pricing</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-nav-title">Company</h3>
+          <ul>
+            <li class="footer-nav-item">Careers</li>
+            <li class="footer-nav-item">Guide</li>
+            <li class="footer-nav-item">Partnerships</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-nav-title">Support</h3>
+          <ul>
+            <li class="footer-nav-item">Help Center</li>
+            <li class="footer-nav-item">Customer Support</li>
+            <li class="footer-nav-item">API Docs</li>
+            <li class="footer-nav-item">System Status</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-nav-title">Resources</h3>
+          <ul>
+            <li class="footer-nav-item">FAQ</li>
+            <li class="footer-nav-item">Blog</li>
+            <li class="footer-nav-item">Privacy Policy</li>
+            <li class="footer-nav-item">Terms of Service</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ニュースレター登録フォーム -->
+      <form class="newsletter">
+        <h3>Subscribe to Our Newsletter</h3>
+        <p>Stay updated with the latest book releases and exclusive offers</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" />
+          <button>Subscribe</button>
+        </div>
+      </form>
+    </footer>
+    <!-- <script src="index.js" defer></script> -->
+  </body>
 </html>
