@@ -6,36 +6,32 @@ const billedMonthly = document.getElementById('monthly');
 const plans = document.querySelectorAll('.plan');
 
 // 金額をUSD表記に整形
-function formatUSD(value) {
-  return value === 0 ? '$0' : `$${value.toFixed(2)}`;
-}
+const formatUSD = (value) => (value === 0 ? '$0' : `$${value.toFixed(2)}`);
 
 // cssクラスをトグル
-function setSelected(isAnnual) {
+const setSelected = (isAnnual) => {
   billedAnnually.classList.toggle('selected', isAnnual);
   billedMonthly.classList.toggle('selected', !isAnnual);
-}
+};
 
 // プランの金額とテキストを切替
-function updatePlans(isAnnual) {
+const updatePlans = (isAnnual) => {
   plans.forEach((plan) => {
-    const monthlyBase = Number(plan.dataset.monthly || 0);
+    const monthlyPrice = Number(plan.dataset.monthly || 0);
     const priceEl = plan.querySelector('.price');
     const infoEl = plan.querySelector('.price-info');
 
     // 金額：Annualなら20%OFFの実質月額、Monthlyなら基準月額
-    const display = isAnnual ? monthlyBase * (1 - DISCOUNT) : monthlyBase;
+    const display = isAnnual ? monthlyPrice * (1 - DISCOUNT) : monthlyPrice;
 
     priceEl.textContent = formatUSD(display);
 
     // テキスト
-    if (isAnnual) {
-      infoEl.textContent = 'per user/month, billed annually';
-    } else {
-      infoEl.textContent = 'per user/month, billed monthly';
-    }
+    infoEl.textContent = isAnnual
+      ? 'per user/month, billed annually'
+      : 'per user/month, billed monthly';
   });
-}
+};
 
 // クリックされた要素から、どちらを選んだか判定して切替
 billedOptions.addEventListener('click', (e) => {
