@@ -124,24 +124,39 @@ header {
   display: flex;
   gap: 1rem;
   border: #f9f9f9 2px solid;
-}
-
-#billing-options {
   cursor: pointer;
+  position: relative;
 }
 
 /* サブスク期間選択 */
 .billing-option {
   color: #000;
   background-color: #fff;
+  background-color: transparent;
   border-radius: 0.4rem;
   padding: 0.4rem 0.9rem;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
 }
 
 /* サブスク期間選択2 */
 .selected {
   color: #fff;
+}
+
+#billing-slider {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.5rem;
+  height: calc(100% - 0.8rem);
   background-color: #000;
+  border-radius: 0.4rem;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
 }
 
 #annually span {
@@ -273,7 +288,6 @@ footer {
 
 .footer-content {
   padding: 3rem 0;
-  width: 90%;
 }
 
 /* フッターナビタイトル */
@@ -291,7 +305,6 @@ footer {
   font-size: 0.9rem;
   justify-content: space-between;
   line-height: 1.7;
-  width: 90%;
 }
 
 .footer-links ul {
@@ -355,4 +368,54 @@ footer {
   background-color: #fff;
   color: #000;
   box-shadow: 0 0 0 1px #000;
+}
+
+.toggle {
+  display: inline-flex;
+  position: relative;
+  background: #e0e0e0;
+  border-radius: 999px;
+  padding: 4px;
+  cursor: pointer;
+  user-select: none;
+  gap: 0;
+}
+
+/* スライドするインジケーター */
+.toggle__slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* bが選択中 → スライダーを右へ */
+.toggle.is-b .toggle__slider {
+  transform: translateX(100%);
+}
+
+/* a / b 共通ラベルスタイル */
+.toggle__item {
+  position: relative;
+  z-index: 1;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  transition: color 0.3s;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* 選択中のラベルだけ文字色を変える */
+.toggle.is-a .toggle__item--a,
+.toggle.is-b .toggle__item--b {
+  color: #1a73e8;
 }
