@@ -3,27 +3,38 @@ const DISCOUNT = 0.2; // 20% off
 const billedOptions = document.getElementById('billing-options');
 const billedAnnually = document.getElementById('annually');
 const billedMonthly = document.getElementById('monthly');
+const billedSlider = document.getElementById('billing-slider');
 const plans = document.querySelectorAll('.plan');
 
 let isAnnual = true;
 
-// 読み込み時Annualに設定
-window.onload = () => toggleOptions(isAnnual);
+// 初回読み込み時
+window.onload = () => {
+  // トランジションオフ
+  billedSlider.style.transition = 'none';
+
+  // 初期値をAnnualに設定
+  toggleOptions(isAnnual);
+
+  // トランジションオン
+  requestAnimationFrame(() => (billedSlider.style.transition = ''));
+};
 
 // トグル実行
 const toggleOptions = (isAnnual) => {
   setSelected(isAnnual);
   updatePlans(isAnnual);
+  moveSlider(isAnnual ? billedAnnually : billedMonthly);
 };
 
-// 金額をUSD表記に整形
-const formatUSD = (value) => (value === 0 ? '$0' : `$${value.toFixed(2)}`);
-
-// cssクラスをトグル
+// クラスをトグル
 const setSelected = (isAnnual) => {
   billedAnnually.classList.toggle('selected', isAnnual);
   billedMonthly.classList.toggle('selected', !isAnnual);
 };
+
+// 金額をUSD表記に整形
+const formatUSD = (value) => (value === 0 ? '$0' : `$${value.toFixed(2)}`);
 
 // プランの金額とテキストを切替
 const updatePlans = (isAnnual) => {
@@ -44,8 +55,23 @@ const updatePlans = (isAnnual) => {
   });
 };
 
-// クリックされた要素から、どちらを選んだか判定して切替
-billedOptions.addEventListener('click', (e) => {
+// スライダーの位置・幅を対象要素に合わせてセット
+const moveSlider = (target) => {
+  // billing-options の左端を基準にした相対位置を計算
+  const parentRect = billedOptions.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+
+  billedSlider.style.width = `${targetRect.width}px`;
+  billedSlider.style.transform = `translateX(${
+    targetRect.left - parentRect.left - parseFloat(getComputedStyle(billedOptions).paddingLeft)
+  }px)`;
+};
+
+// トグルクリックイベント
+billedOptions.addEventListener('click', () => {
+  // フラグを反転
   isAnnual = !isAnnual;
+
+  // トグル実行
   toggleOptions(isAnnual);
 });
