@@ -1,5 +1,6 @@
 const DISCOUNT = 0.2; // 20% off
 
+// DOM要素
 const billedOptions = document.getElementById('billing-options');
 const billedAnnually = document.getElementById('annually');
 const billedMonthly = document.getElementById('monthly');
@@ -9,14 +10,15 @@ const plans = document.querySelectorAll('.plan');
 let isAnnual = true;
 
 // 初回読み込み時
-window.onload = () => {
-  // トグルアニメーションオフ
+document.addEventListener('DOMContentLoaded', () => {
+  // アニメーションなしで初期値をセット
+  withoutTransition(() => toggleOptions(isAnnual, false));
+});
+
+// スライダーのtransitionを無効にしてコールバックを実行
+const withoutTransition = (callback) => {
   billedSlider.style.transition = 'none';
-
-  // 初期値をAnnual(true)に設定
-  toggleOptions(isAnnual, false);
-
-  // トグルアニメーションオン
+  callback();
   requestAnimationFrame(() => (billedSlider.style.transition = ''));
 };
 
@@ -27,7 +29,7 @@ const toggleOptions = (isAnnual, animate = true) => {
   moveSlider(isAnnual ? billedAnnually : billedMonthly);
 };
 
-// クラスをトグル
+// 選択状態のクラスをセット
 const setSelected = (isAnnual) => {
   billedAnnually.classList.toggle('selected', isAnnual);
   billedMonthly.classList.toggle('selected', !isAnnual);
@@ -45,7 +47,6 @@ const updatePlans = (isAnnual, animate = true) => {
 
     // 金額：Annualなら20%OFFの実質月額、Monthlyなら基準月額
     const display = isAnnual ? monthlyPrice * (1 - DISCOUNT) : monthlyPrice;
-
     const priceInfo = isAnnual ? 'annually' : 'monthly';
 
     // テキスト更新
@@ -56,22 +57,20 @@ const updatePlans = (isAnnual, animate = true) => {
 
 // スライダーの位置・幅を対象要素に合わせてセット
 const moveSlider = (targetOption) => {
-  // 移動量計算用の数値を取得
   const parentRect = billedOptions.getBoundingClientRect();
-  const targetOptionRect = targetOption.getBoundingClientRect();
-  const parentPaddingLeft = parseFloat(getComputedStyle(billedOptions).paddingLeft);
+  const targetRect = targetOption.getBoundingClientRect();
+  const paddingLeft = parseFloat(getComputedStyle(billedOptions).paddingLeft);
 
   // 移動量を算出
-  const offsetX = targetOptionRect.left - parentRect.left - parentPaddingLeft;
+  const offsetX = targetRect.left - parentRect.left - paddingLeft;
 
-  // スライダーに計算後のスタイルをセット
-  billedSlider.style.width = `${targetOptionRect.width}px`;
+  billedSlider.style.width = `${targetRect.width}px`;
   billedSlider.style.transform = `translateX(${offsetX}px)`;
 };
 
-// テキストの変更時にトランジション
+// テキストの変更時にフェードトランジション
 const changeTextWithFade = (el, newText, animate = true) => {
-  // 初回ならアニメーション無し
+  // 初回はアニメーションなし
   if (!animate) {
     el.textContent = newText;
     return;
@@ -88,9 +87,6 @@ const changeTextWithFade = (el, newText, animate = true) => {
 
 // トグルクリックイベント
 billedOptions.addEventListener('click', () => {
-  // フラグを反転
   isAnnual = !isAnnual;
-
-  // トグル実行
   toggleOptions(isAnnual);
 });
